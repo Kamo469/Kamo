@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Focrush - Student Dating</title>
+    <style>
+        /* CSS styles can be added here for styling the website */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #666;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .chat-box {
+            width: 80%;
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow-y: scroll;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .message {
+            background-color: #f9f9f9;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+        .message.sender {
+            text-align: right;
+        }
+        .message.receiver {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Focrush - Student Dating</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+    <main>
+        <h2>Find Your Match</h2>
+        <!-- Form for user input -->
+        <form action="#" method="post">
+            <label for="gender">I am:</label>
+            <select name="gender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select><br><br>
+            <label for="looking-for">Looking for:</label>
+            <select name="looking-for" id="looking-for">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="both">Both</option>
+            </select><br><br>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="18" max="99"><br><br>
+            <label for="bio">Tell us about yourself:</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50"></textarea><br><br>
+            <input type="submit" value="Find Match">
+        </form>
+        
+        <!-- Chat section -->
+        <div class="chat-container">
+            <h2>Chat</h2>
+            <div class="chat-box">
+                <!-- Messages will be displayed here -->
+                <div class="message sender">You: Hi there!</div>
+                <div class="message receiver">John: Hey, how are you?</div>
+                <div class="message sender">You: I'm good, thanks!</div>
+                <!-- Example messages -->
+            </div>
+            <!-- Input field for sending messages -->
+            <input type="text" id="message-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Focrush - Student Dating</p>
+    </footer>
+
+    <script>
+        function sendMessage() {
+            // Function to send a message
+            var messageInput = document.getElementById("message-input");
+            var message = messageInput.value;
+            if (message.trim() !== "") {
+                // Append the message to the chat box
+                var chatBox = document.querySelector(".chat-box");
+                var messageDiv = document.createElement("div");
+                messageDiv.textContent = "You: " + message;
+                messageDiv.classList.add("message", "sender");
+                chatBox.appendChild(messageDiv);
+                // Clear the input field
+                messageInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
